@@ -52,3 +52,18 @@ sam local start-api
 ```
 
 Make sure you delete the session token and reauth your developer key with `Remove-Item Env:AWS_SESSION_TOKEN `, if your sts session keys expire you will have to remove them and reuth to get new ones
+
+
+We now take the following steps
+
+AWS Management Console (Add layer option)
+Open the AWS Lambda console at https://console.aws.amazon.com/lambda/.
+
+Choose your function. In the Layers area, choose Add a layer.
+
+In the Choose a layer area, choose the AWS layers option.
+
+For AWS layers, choose AWS-Parameters-and-Secrets-Lambda-Extension, choose a version, and then choose Add.
+
+https://docs.aws.amazon.com/systems-manager/latest/userguide/ps-integration-lambda-extensions.html
+See the end of this article for the AWS Parameters and Secrets Lambda Extension ARNs
