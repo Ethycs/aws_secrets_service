@@ -16,7 +16,7 @@ Resources:
     Type: AWS::Serverless::Function # More info about Function Resource: https://github.com/awslabs/serverless-application-model/blob/master/versions/2016-10-31.md#awsserverlessfunction
     Properties:
       CodeUri: secrets_api/
-      Handler: app.get_secret
+      Handler: app.lambda_handler
       Runtime: python3.9
       Architectures:
         - x86_64
