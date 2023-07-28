@@ -5,8 +5,8 @@ codeuri = "F:\\Keytone\\Documents\\GitHub\\aws_secrets_service\\test-sam\\secret
 runtime = "python3.9"
 architecture = "x86_64"
 handler = "app.get_secret"
-source_hash = "8932c2ba80ef568ec98cc790b443c4dbced9bf0c4e1d770d85a141fca0d17ccf"
-manifest_hash = ""
+source_hash = "5c9c418d88bb3cc3b306dd5e9d9df25d5ee40ce9249735a4c3d1f2c40e152f74"
+manifest_hash = "9f8294cca39a4fbd41367aea170eb1e3"
 packagetype = "Zip"
 functions = ["HelloWorldFunction"]
 

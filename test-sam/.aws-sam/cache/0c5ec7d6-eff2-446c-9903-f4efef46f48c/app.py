@@ -1,37 +1,40 @@
-import json
-
-# import requests
 import boto3
-from botocore.exceptions import ClientError
+import json
+import base64
+import logging
+from botocore.exceptions import BotoCoreError, ClientError
 
-def get_secret(event, context):
-    secret_name = "test_secret"
-    region_name = "us-east-2"
+logger = logging.getLogger()
+logger.setLevel(logging.INFO)
 
+def get_secret(secret_name, region_name):
+    print(f"Getting secret: {secret_name}")
     session = boto3.session.Session()
     client = session.client(
         service_name='secretsmanager',
         region_name=region_name
     )
-
+    logger.info(f"Getting secret: {secret_name}")
     try:
         get_secret_value_response = client.get_secret_value(
             SecretId=secret_name
         )
     except ClientError as e:
-        raise e
+        print("Error getting secret: ", e.response['Error']['Code'])
+        raise Exception("Couldn't retrieve the secret") from e
+    else:
+        if 'SecretString' in get_secret_value_response:
+            return get_secret_value_response['SecretString']
+        else:
+            return base64.b64decode(get_secret_value_response['SecretBinary'])
 
-    secret = get_secret_value_response['SecretString']
-    print(f"DEBUG:: {secret}")
+def lambda_handler(event, context):
+    secret = get_secret('test_secret', 'us-east-2')
+    print(f"API Key: {secret}")
+    # Now use the secret (API Key) to make your API request
+
+
     return {
-        "statusCode": 200,
-        "body":json.dumps(secret),
+        'statusCode': 200,
+        'body': json.dumps('Hello from Lambda!'),
     }
-
-    # return {
-    #     "statusCode": 200,
-    #     "body": json.dumps({
-    #         "message": "hello world",
-    #         # "location": ip.text.replace("\n", "")
-    #     }),
-    # }
