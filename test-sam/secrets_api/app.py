@@ -1,6 +1,6 @@
 import os
 import json
-import requests
+# import requests
 from aws_secretsmanager_caching import SecretCache, SecretCacheConfig
 
 def lambda_handler(event, context):
