@@ -5,9 +5,9 @@ codeuri = "F:\\Keytone\\Documents\\GitHub\\aws_secrets_service\\test-sam\\secret
 runtime = "python3.9"
 architecture = "x86_64"
 handler = "app.lambda_handler"
-source_hash = "4a4fc72f0adf2548fcf9ca1f9263cf8f36dc799dd6f69fdba10e5ac763ff6a8c"
+source_hash = "169e34345871418838b6efb67744b3d63680e74fbad1405e6a3a0b8780aad3ba"
 manifest_hash = ""
 packagetype = "Zip"
-functions = ["HelloWorldFunction"]
+functions = ["AWSSecretFunction"]
 
 [layer_build_definitions]

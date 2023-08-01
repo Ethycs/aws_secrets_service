@@ -2,7 +2,7 @@ import os
 
 import json
 import requests
-from aws_secretsmanager_caching import SecretCache, SecretCacheConfig
+# from aws_secretsmanager_caching import SecretCache, SecretCacheConfigs
 
 def lambda_handler(event, context):
     # # Instantiate secret cache with specific configuration
@@ -13,7 +13,7 @@ def lambda_handler(event, context):
 
     # # Secrets are returned as a JSON string, so load it as a Python object
     # secrets = json.loads(secret_object)
-
+    secret_name = event['pathParameters']['secret_name']
     # # Use the secrets to authenticate an HTTP request
     # response = requests.get(
     #     'http://example.com',
@@ -23,7 +23,7 @@ def lambda_handler(event, context):
     secrets_extension_endpoint = "http://localhost:" + \
     "2773" + \
     "/secretsmanager/get?secretId=" + \
-    "test_secret" 
+    secret_name
   
     r = requests.get(secrets_extension_endpoint, headers=headers)
   
@@ -32,9 +32,4 @@ def lambda_handler(event, context):
     return {
         'statusCode': 200,
         'body': secret
-    }
-
-    return {
-        'statusCode': 200,
-        'body': json.dumps('Hello from Lambda!'),
     }

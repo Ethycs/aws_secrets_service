@@ -1,4 +1,5 @@
 import boto3
+import base64
 from botocore.exceptions import BotoCoreError, ClientError
 
 def get_secret(secret_name, region_name):
