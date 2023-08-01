@@ -27,8 +27,8 @@ Resources:
           Properties:
             Path: /hello
             Method: get
-      # Layers:
-      #   - arn:aws:lambda:us-east-2:590474943231:layer:AWS-Parameters-and-Secrets-Lambda-Extension:4
+      Layers:
+        - arn:aws:lambda:us-east-2:590474943231:layer:AWS-Parameters-and-Secrets-Lambda-Extension:4
 
 Outputs:
   # ServerlessRestApi is an implicit API created out of Events key under Serverless::Function
